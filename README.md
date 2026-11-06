@@ -36,6 +36,7 @@ Clone the repository and run the application using your preferred cross-platform
 
 ### Method 1: Using the Cross-Platform Python Launcher (Recommended)
 Works seamlessly across Windows, macOS, and Linux to automate environment setup and app launch:
+
 **python run.py**
 
 ### Method 2: Using Makefile (Linux / macOS / Git Bash)
@@ -47,14 +48,19 @@ Automates virtual environment creation and package installation via terminal tar
 Configure your environment manually using standard terminal commands: 
 
 **1. Create and activate virtual environment**
+
 python -m venv venv
+
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
 
 **2. Install dependencies**
+
 pip install --upgrade pip
+
 pip install -r requirements.txt
 
 **3. Launch the Streamlit application**
+
 streamlit run app.py
 
 
