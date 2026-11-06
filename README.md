@@ -36,13 +36,12 @@ Clone the repository and run the application using your preferred cross-platform
 
 ### Method 1: Using the Cross-Platform Python Launcher (Recommended)
 Works seamlessly across Windows, macOS, and Linux to automate environment setup and app launch:
-```bash
-python run.py
+**python run.py**
 
 ### Method 2: Using Makefile (Linux / macOS / Git Bash)
 Automates virtual environment creation and package installation via terminal targets:
-make setup
-make run
+**make setup**
+**make run**
 
 ### Method 3: Manual Setup
 Configure your environment manually using standard terminal commands:
@@ -57,7 +56,6 @@ pip install -r requirements.txt
 # 3. Launch the Streamlit application
 streamlit run app.py
 
-### Project Stucture
 ICD311_Shoe_Classifier/
 ├── .streamlit/
 │   └── config.toml           # Streamlit UI theme configurations
@@ -72,3 +70,12 @@ ICD311_Shoe_Classifier/
 ├── requirements.txt          # Project Python dependencies
 ├── app.py                    # Main Streamlit application script
 └── README.md                 # Project documentation
+
+### 👨‍💻 Developer
+## Mwila Singoma (AKA CodeCrafterMwila)
+
+# Bachelor of Data Science Student | Mulungushi University 🇿🇲 Zambia
+
+**Specialisations: Artificial Intelligence, Deep Learning, Computer Vision, Machine Learning, Python Development.**
+
+© 2026 CodeCrafterMwila AI Lab.
