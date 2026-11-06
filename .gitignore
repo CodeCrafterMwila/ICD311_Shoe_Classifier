@@ -1,0 +1,22 @@
+# Python & Environment Artifacts
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Windows / OS System Files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Compressed Archives & Local Media
+*.rar
+*.zip
+*.7z
+
+# Large Model Weights (Keep .pth out of Git unless using Git LFS)
+models/*.pth
+
+# Raw Datasets
+dataset/

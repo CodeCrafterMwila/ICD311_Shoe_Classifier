@@ -1,0 +1,18 @@
+Test Accuracy: 75.22%
+
+              precision    recall  f1-score   support
+
+ballet_flats       0.76      0.73      0.75        90
+       boats       0.73      0.73      0.73        90
+       boots       0.77      0.53      0.62        38
+     brogues       0.82      0.83      0.82        90
+       clogs       0.67      0.69      0.68        90
+  flip_flops       0.79      0.70      0.74        37
+     loafers       0.60      0.70      0.65        37
+     sandals       0.75      0.71      0.73        38
+    sneakers       0.80      0.83      0.82       127
+soccer_shoes       0.77      0.89      0.82        37
+
+    accuracy                           0.75       674
+   macro avg       0.75      0.74      0.74       674
+weighted avg       0.75      0.75      0.75       674
