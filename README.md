@@ -44,7 +44,8 @@ Automates virtual environment creation and package installation via terminal tar
 **make run**
 
 ### Method 3: Manual Setup
-Configure your environment manually using standard terminal commands:
+Configure your environment manually using standard terminal commands: 
+
 **1. Create and activate virtual environment**
 python -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
