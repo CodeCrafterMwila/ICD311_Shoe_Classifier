@@ -1,35 +1,54 @@
-# 👟 Intelligent Shoe Classifier
+# 👟 AI-Powered Shoe Classification Web App
 
-<p align="center">
-  <img src="assets/banner.png" alt="CodeCrafterMwila AI Lab Banner" width="100%">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
-  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
-  <img src="https://img.shields.io/badge/Computer_Vision-005571?style=for-the-badge&logo=opencv&logoColor=white" alt="Computer Vision">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-</p>
-
-A production-ready deep learning web application that identifies footwear categories using a custom-trained **MobileNetV3** convolutional neural network, powered by **PyTorch** and deployed via **Streamlit**.
+> A production-grade computer vision web application built with **PyTorch**, **MobileNetV3 (Small)**, and **Streamlit**. Designed with a GitHub-inspired dark aesthetic and neon green accents, featuring live camera inference, batch processing, MLOps confidence thresholds, and automated reporting.
 
 ---
 
-## 🚀 Features
-- **Real-Time AI Inference:** Instant classification using optimized MobileNetV3 small architecture.
-- **Hardware Acceleration:** Automatic CUDA (GPU) detection with fallback to CPU execution.
-- **Interactive Web UI:** Custom dark GitHub-inspired theme (`#0E1117`) with neon green accents and confidence metrics.
-- **Top-K Predictions:** Displays the top category matches with probability breakdown bars.
+## ✨ Features & Architecture
+
+* **🧠 Deep Learning Backbone**: Fine-tuned **MobileNetV3 Small** convolutional neural network optimized for fast, lightweight edge and web inference.
+* **⚡ Multi-Mode Input Selection**:
+  * **Custom Uploads**: Supports single or multi-image drag-and-drop processing (`JPG`, `JPEG`, `PNG`).
+  * **Instant Sample Gallery**: Pre-loaded test samples for instant one-click testing without local files.
+  * **Live Camera Capture**: Real-time webcam or mobile camera integration via `st.camera_input()`.
+* **📊 Batch Processing & MLOps Controls**:
+  * Bulk inference capability across multiple images with a summary results dataframe.
+  * Dynamic sidebar confidence threshold slider for uncertainty flagging and out-of-distribution handling.
+* **⏱️ Performance Benchmarking & Reporting**: Real-time inference latency tracking in milliseconds (`ms`) and automated CSV report generation for single or batch runs.
 
 ---
 
-## 🛠️ Project Structure
+## 🛠️ Tech Stack
 
-```text
-ICD311_Shoe_Classifier/
-├── .streamlit/         # Streamlit UI configuration
-├── assets/             # Banner and visual graphics
-├── models/             # Fine-tuned PyTorch model weights (.pth)
-├── app.py              # Main Streamlit web application
-├── shoe_classifier.ipynb # Model training & experimentation notebook
-└── requirements.txt    # Python dependencies
+* **Language**: Python 3.10+
+* **Deep Learning Framework**: PyTorch & Torchvision
+* **Frontend & UI**: Streamlit (Custom Dark Theme `#0E1117` with Neon Accents `#00FF66`)
+* **Data Processing**: Pandas & NumPy
+* **Image Processing**: Pillow (PIL)
+
+---
+
+## 🚀 Quickstart & Installation
+
+Clone the repository and run the application using your preferred cross-platform setup method:
+
+### Method 1: Using the Cross-Platform Python Launcher (Recommended)
+Works seamlessly across Windows, macOS, and Linux:
+```bash
+python run.py
+
+### Method 2: Using Makefile (Linux / macOS / Git Bash)
+make setup
+make run
+
+### Method 3: Manual Setup
+# 1. Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+# 2. Install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# 3. Launch the Streamlit application
+streamlit run app.py
