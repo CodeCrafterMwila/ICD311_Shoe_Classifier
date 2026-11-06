@@ -45,37 +45,23 @@ Automates virtual environment creation and package installation via terminal tar
 
 ### Method 3: Manual Setup
 Configure your environment manually using standard terminal commands:
-# 1. Create and activate virtual environment
+**1. Create and activate virtual environment**
 python -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
 
-# 2. Install dependencies
+**2. Install dependencies**
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# 3. Launch the Streamlit application
+**3. Launch the Streamlit application**
 streamlit run app.py
 
-ICD311_Shoe_Classifier/
-├── .streamlit/
-│   └── config.toml           # Streamlit UI theme configurations
-├── assets/
-│   ├── banner.png            # GitHub repository banner graphic
-│   └── samples/              # Preset sample images for gallery mode
-├── models/
-│   └── shoe_classifier_mobilenetv3.pth  # Trained PyTorch model checkpoint
-├── .gitignore
-├── Makefile                  # Cross-platform CLI automation
-├── run.py                    # Cross-platform Python startup launcher
-├── requirements.txt          # Project Python dependencies
-├── app.py                    # Main Streamlit application script
-└── README.md                 # Project documentation
 
-### 👨‍💻 Developer
+# 👨‍💻 Developer
 ## Mwila Singoma (AKA CodeCrafterMwila)
 
-# Bachelor of Data Science Student | Mulungushi University 🇿🇲 Zambia
+### Bachelor of Data Science Student | Mulungushi University 🇿🇲 Zambia
 
-**Specialisations: Artificial Intelligence, Deep Learning, Computer Vision, Machine Learning, Python Development.**
+**Specialisations**: Artificial Intelligence, Deep Learning, Computer Vision, Machine Learning, Python Development.
 
 © 2026 CodeCrafterMwila AI Lab.
