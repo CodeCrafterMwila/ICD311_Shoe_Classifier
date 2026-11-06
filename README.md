@@ -41,7 +41,9 @@ Works seamlessly across Windows, macOS, and Linux to automate environment setup 
 
 ### Method 2: Using Makefile (Linux / macOS / Git Bash)
 Automates virtual environment creation and package installation via terminal targets:
+
 **make setup**
+
 **make run**
 
 ### Method 3: Manual Setup
