@@ -327,6 +327,10 @@ if uploaded_files:
 
         if classify:
             with st.spinner("Analysing image..."):
+
+                if device.type == "cuda":
+                    torch.cuda.synchronize(device)
+
                 start_time = time.perf_counter()
 
                 image_tensor = (
@@ -343,6 +347,9 @@ if uploaded_files:
                         k=min(3, len(class_names)),
                         dim=1
                     )
+
+                if device.type == "cuda":
+                    torch.cuda.synchronize(device)
 
                 latency = (time.perf_counter() - start_time) * 1000
 
@@ -443,6 +450,11 @@ if uploaded_files:
             for idx, file_item in enumerate(uploaded_files):
                 try:
                     img = Image.open(BytesIO(file_item.getvalue())).convert("RGB")
+
+                    # Synchronise GPU before timing
+                    if device.type == "cuda":
+                        torch.cuda.synchronize(device)
+
                     start_t = time.perf_counter()
 
                     img_tensor = evaluation_transform(img).unsqueeze(0).to(device)
@@ -451,6 +463,10 @@ if uploaded_files:
                         outputs = model(img_tensor)
                         probs = torch.softmax(outputs, dim=1)
                         top_prob, top_idx = torch.topk(probs, k=1, dim=1)
+
+                    # Wait for GPU operations to finish
+                    if device.type == "cuda":
+                        torch.cuda.synchronize(device)
 
                     lat_ms = (time.perf_counter() - start_t) * 1000
 
