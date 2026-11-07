@@ -17,6 +17,7 @@ Desktop.ini
 
 # Large Model Weights (Keep .pth out of Git unless using Git LFS)
 models/*.pth
+!models/shoe_classifier_mobilenetv3.pth
 
 # Raw Datasets
 dataset/
