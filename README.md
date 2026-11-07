@@ -564,7 +564,6 @@ Mulungushi University 🇿🇲 Zambia
 - Python Development
 - Data Science
 
-### GitHub
 
 ### GitHub
 
