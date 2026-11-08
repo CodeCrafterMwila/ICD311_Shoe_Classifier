@@ -297,7 +297,10 @@ with mode_tab2:
     sample_dir = Path(__file__).resolve().parent / "assets" / "samples"
     
     if sample_dir.exists():
-        sample_images = list(sample_dir.glob("*.jpg")) + list(sample_dir.glob("*.png"))
+        sample_images = [
+    path for path in sample_dir.iterdir()
+    if path.is_file() and path.suffix.lower() in {".jpg", ".jpeg", ".png"}
+]
         if sample_images:
             cols = st.columns(min(len(sample_images), 4))
             for idx, img_path in enumerate(sample_images[:4]):
