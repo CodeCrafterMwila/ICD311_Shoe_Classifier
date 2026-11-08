@@ -5,11 +5,52 @@ import torchvision.models as models
 
 import time
 import pandas as pd
+import warnings
+
 from datetime import datetime
 from torchvision import transforms
-from PIL import Image
+from PIL import Image, ImageFile, UnidentifiedImageError
 from pathlib import Path
 from io import BytesIO
+
+
+# ==========================================================
+# IMAGE PROCESSING SAFETY CONFIGURATION
+# ==========================================================
+
+Image.MAX_IMAGE_PIXELS = 25_000_000
+
+warnings.simplefilter("error", Image.DecompressionBombWarning)
+
+ImageFile.LOAD_TRUNCATED_IMAGES = False
+
+
+def load_shoe_image(uploaded_file):
+    """
+    Safely load an uploaded image and convert it to RGB.
+    """
+
+    image_bytes = uploaded_file.getvalue()
+
+    if not image_bytes:
+        raise ValueError("The uploaded image is empty.")
+
+    try:
+        with Image.open(BytesIO(image_bytes)) as image:
+            image.verify()
+
+        with Image.open(BytesIO(image_bytes)) as image:
+            image.load()
+            return image.convert("RGB")
+
+    except Image.DecompressionBombError:
+        raise ValueError("Image is too large to process safely.")
+
+    except Image.DecompressionBombWarning:
+        raise ValueError("Image exceeds the permitted size.")
+
+    except (UnidentifiedImageError, OSError):
+        raise ValueError("Invalid or corrupted image file.")
 
 
 # ==========================================================
@@ -291,20 +332,26 @@ st.caption("Supported formats: JPG, JPEG, PNG")
 # MAIN PREDICTION FLOW (SINGLE & BATCH)
 # ==========================================================
 
+
 if uploaded_files:
 
     # ------------------------------------------------------
     # SINGLE IMAGE MODE
     # ------------------------------------------------------
+
     if len(uploaded_files) == 1:
+
         single_file = uploaded_files[0]
 
         try:
-            image = Image.open(
-                BytesIO(single_file.getvalue())
-            ).convert("RGB")
-        except Exception:
-            st.error("Could not load image.")
+            image = load_shoe_image(single_file)
+
+        except ValueError as error:
+            st.error(f"❌ Image Processing Error: {error}")
+            st.stop()
+
+        except Exception as error:
+            st.error(f"❌ Unexpected image error: {error}")
             st.stop()
 
         preview_col, info_col = st.columns([2, 1])
@@ -449,7 +496,7 @@ if uploaded_files:
             
             for idx, file_item in enumerate(uploaded_files):
                 try:
-                    img = Image.open(BytesIO(file_item.getvalue())).convert("RGB")
+                    img = load_shoe_image(file_item)
 
                     # Synchronise GPU before timing
                     if device.type == "cuda":
